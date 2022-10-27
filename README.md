@@ -1,4 +1,4 @@
-Started from a youtube tutorial and now adding some new features to the console game.
+Got the idea from a youtube tutorial and now making some changes and adding new features.
 <br>-27.10.2022-
 <br>*added the possible to see history of your actions type during the battle , after the game is over.
 <br>*added the possibility to cheat and kill the enemy in one hit.
