@@ -68,7 +68,7 @@
             else
             {
                 //If its not dead , print his health.
-                Console.WriteLine("You hit the enemy with {0} damage(CRITICAL) and " +
+                Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
                     "it has {1} health left!", hit_value, Health);
             }
         }
@@ -102,7 +102,7 @@
         /// <summary>
         /// Called when the enemy is supposed to be gone.
         /// </summary>
-        private void Gone()
+        public void Gone()
         {
             //Write to the console that the enemy is gone.
             Console.WriteLine("{0} is gone!", Name);
