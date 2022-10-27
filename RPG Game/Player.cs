@@ -87,7 +87,6 @@
                 else
                 {
                     Console.WriteLine("You were CRITICALLY hit with {0} damage and you have {1} health left.", hit_value, Health);
-
                 }
             }
         }

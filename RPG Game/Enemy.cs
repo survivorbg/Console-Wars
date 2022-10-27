@@ -68,6 +68,7 @@
             else
             {
                 //If its not dead , print his health.
+                Console.Beep(750,100);
                 Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
                     "it has {1} health left!", hit_value, Health);
             }
