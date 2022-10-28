@@ -36,7 +36,7 @@
         {
             //Subtract the hit value from the health.
             Health -= hit_value;
-
+            Statistics.CollectDamageForSingleAttack(hit_value);
 
             //Check if the enemy is dead.
             if (Health <= 0)
@@ -56,7 +56,7 @@
         {
             //Subtract the hit value from the health.
             Health -= hit_value;
-
+            Statistics.CollectDamageForSingleAttack(hit_value);
 
             //Check if the enemy is dead.
             if (Health <= 0)

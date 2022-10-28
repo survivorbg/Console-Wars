@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            
 
-
+            //Create a history variable, so we can track the history.
+            History history = new History();
 
             //Create and store the random class
             Random random = new Random();
@@ -34,7 +34,7 @@
 
 
             //Perform the battle game loop.
-            GameLoop(firstEnemy, random, player, 10);
+            GameLoop(firstEnemy, random, player, 10, history);
 
 
             //Check if the player is dead.
@@ -47,7 +47,7 @@
 
 
                 //Perform the battle game loop.
-                GameLoop(boss, random, player, 17);
+                GameLoop(boss, random, player, 17, history);
 
                 if (!player.isDead)
                 {
@@ -70,27 +70,31 @@
                 GameOver();
             }
             //TODO - да го сложа в горния иф 
-            Console.WriteLine("Do you want to see a history of your actions?");//Ask the player if he want to see the history of his actions , during the battles.
+            Console.WriteLine("\nHistory -> \"H\" \nStatistics -> \"S\"\nExit - 0");//Ask the player if he want to see the history of his actions during the battles.
 
             //Store the player wish to see the "Battle History"
-            string playerWishToSeeHistory = Console.ReadLine().ToLower();
-            while(playerWishToSeeHistory!= "yes" && playerWishToSeeHistory != "no")
+            string playerWish = Console.ReadLine().ToLower();
+            while (playerWish != "h" && playerWish != "s" && playerWish != "0")
             {
                 Console.WriteLine("Invalid input. Do you want to see a history of your actions?");
-                playerWishToSeeHistory = Console.ReadLine().ToLower();
+                playerWish = Console.ReadLine().ToLower();
             }
 
-            if(playerWishToSeeHistory == "yes")
+            if (playerWish == "h")
             {
-                player.ShowHistoryOfPlayerActions();
+                history.ShowHistoryOfPlayerActions();
             }
-
-
-
-
-
+            else if (playerWish == "s")
+            {
+                Statistics.ShowStatistics();
+            }
+            else if (playerWish == "0")
+            {
+                Console.WriteLine("THANKS FOR PLAYING!");
+                return;
+            }
         }
-        
+
 
 
 
@@ -108,17 +112,17 @@
         /// <param name="random">The random number generator we will use to generate random numbers.</param>
         /// <param name="player">The player that we are playing as.</param>
         /// <param name="max_attack_power">The max attack power the enemy has to attack player.</param>
-        private static void GameLoop(Enemy enemy, Random random, Player player, int max_attack_power)
+        private static void GameLoop(Enemy enemy, Random random, Player player, int max_attack_power, History history)
         {
             //Write out to the screen about the enemy attack.
             Console.WriteLine($"{player.Name}, you have encountered a {enemy.Name}!");
 
-           
+
 
             //While the first enemy and player are not dead , repeat the playable cicle.
             while (!enemy.IsDead && !player.isDead)
             {
-                
+
                 //Write out to the screan your options
                 Console.WriteLine("What would you like to do ? " +
                     "\n\n 1.Single Attack " +
@@ -134,28 +138,26 @@
 
 
                 //Store all the player actions for the "History"
-                player.CollectPlayerActionsForHistory(playerAction);
+                history.CollectPlayerActionsForHistory(playerAction);
 
                 //Check what action the player took against the first enemy.
                 switch (playerAction)
                 {
-                    
+
                     case "1":
                         Console.WriteLine($"{player.Name}, you choose to hit the {enemy.Name} with a Single Attack!");
                         //Apply the atack damage to the enemy.
-                        //firstEnemy.Health -= random.Next(1,15) ;
+
+                        ;
                         if (random.Next(0, 100) >= 95)
                         {
-                            enemy.GetsHitCritical(random.Next(20, 20));
 
+                            enemy.GetsHitCritical(random.Next(20, 20));
                         }
                         else
                         {
                             enemy.GetsHit(random.Next(1, 15));
-
                         }
-                        
-
                         break;
                     case "2":
                         Console.WriteLine($"{player.Name}, you choose to hit the {enemy.Name} with Three Strike Attack!");
@@ -175,13 +177,12 @@
                                 }
                             }
                         }
-                        
 
                         break;
                     case "3":
                         Console.WriteLine($"{player.Name}, you choose to Defend from the {enemy.Name}!");
                         player.isGuarding = true;
-                        
+
                         break;
                     case "4":
                         Console.WriteLine($"{player.Name}, you choose to Heal!");
@@ -195,20 +196,23 @@
                             player.GetsHealed(random.Next(1, 15));
 
                         }
-                       
+
                         break;
-                        //cheatcode - if you enter command Kill - the enemy is automatically dead.
-                    case "kill": 
+
+                    //cheatcode - if you enter command Kill - the enemy is automatically dead.
+                    case "kill":
                         enemy.IsDead = true;
                         enemy.Gone();
-                        break; 
+                        break;
+
                     default:
                         //Tell the player that he entered invalid action.
                         Console.WriteLine("You choose something else.");
                         break;
+
                 }
 
-                //Check again if the enemy is dead and ,have the enemy attack the player.
+                //Check again if the enemy is dead and have the enemy attack the player.
                 if (!enemy.IsDead)
                 {
                     if (random.Next(1, 10) >= 9)

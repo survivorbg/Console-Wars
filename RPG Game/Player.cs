@@ -1,10 +1,13 @@
-﻿namespace RPG_Game
+﻿using System.Security.Cryptography;
+
+namespace RPG_Game
 {
     /// <summary>
     /// This class represents the playable character.
     /// </summary>
     public class Player
     {
+        
         public List<string> playerActions = new List<string>();
         /// <summary>
         /// This represents the players health values.
@@ -29,6 +32,7 @@
         {
             //set the health value to 100.
             Health = 100;
+            
         }
         /// <summary>
         /// This is called when the player is hit.
@@ -46,6 +50,7 @@
             else
             {
                 Health -= hit_value;
+                Statistics.CollectEnemyDamage(hit_value);
                 //Check if the player is dead
                 if (Health <= 0)
                 {
@@ -75,6 +80,7 @@
             else
             {
                 Health -= hit_value;
+                Statistics.CollectEnemyDamage(hit_value);
                 //Check if the player is dead
                 if (Health <= 0)
                 {
@@ -97,6 +103,7 @@
         public void GetsHealed(int healed_value)
         {
             Health += healed_value;
+            Statistics.CollectHeal(healed_value);
             if (Health >= 100)
             {
                 Health = 100;
@@ -110,6 +117,7 @@
         }
         public void GetsCriticalHealed(int healed_value)
         {
+            Statistics.CollectHeal(healed_value);
             Health += healed_value;
             if (Health >= 100)
             {
