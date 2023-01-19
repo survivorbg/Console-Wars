@@ -1,7 +1,7 @@
 Got the idea from a youtube tutorial and now making some changes and adding new features.
 <br>-28.10.2022-
 <br>*added the possibility to see the statistics from the battles(largest hit,biggest heal etc.)
-<br>*will be called cheater in the battle history, if you use the cheat.
+<br>*will be called cheater in the battle history, if you've used the cheat.
 <br>-27.10.2022-
 <br>*added the possibility to see history of your actions type during the battle , after the game is over.
 <br>*added the possibility to cheat and kill the enemy in one hit.
