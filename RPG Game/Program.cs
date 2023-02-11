@@ -34,7 +34,7 @@
 
 
             //Perform the battle game loop.
-            GameLoop(firstEnemy, random, player, player.MaxAttack, firstEnemy.MaxAttack, history);
+            GameLoop(firstEnemy, random, player,history);
 
 
             //Check if the player is dead.
@@ -46,7 +46,7 @@
                 Boss boss = new Boss();
 
                 //Perform the battle game loop.
-                GameLoop(boss, random, player,player.MaxAttack, boss.MaxAttack, history);
+                GameLoop(boss, random, player, history);
 
                 if (!player.isDead)
                 {
@@ -111,7 +111,7 @@
         /// <param name="random">The random number generator we will use to generate random numbers.</param>
         /// <param name="player">The player that we are playing as.</param>
         /// <param name="max_attack_power">The max attack power the enemy has to attack player.</param>
-        private static void GameLoop(Enemy enemy, Random random, Player player,int playerMaxAP, int enemyMaxAP, History history)
+        private static void GameLoop(Enemy enemy, Random random, Player player, History history)
         {
             //Write out to the screen about the enemy attack.
             Console.WriteLine($"{player.Name}, you have encountered a {enemy.Name}!");
@@ -150,11 +150,11 @@
                         if (random.Next(0, 100) >= 95)
                         {
 
-                            enemy.GetsHitCritical(random.Next(20, 20));
+                            enemy.GetsHitCritical(random.Next(player.MaxAttack, player.MaxAttack));//TODO 
                         }
                         else
                         {
-                            enemy.GetsHit(random.Next(1, playerMaxAP));
+                            enemy.GetsHit(random.Next(1, player.MaxAttack));
                         }
                         break;
                     case "2":
@@ -195,12 +195,16 @@
                 {
                     if (random.Next(1, 10) >= 9)
                     {
-                        player.GetsCriticallyHit(random.Next(enemyMaxAP, enemyMaxAP + 10));
+                        player.GetsCriticallyHit(random.Next(enemy.MaxAttack, enemy.MaxAttack + 10));
                     }
                     else
                     {
-                        player.GetsHit(random.Next(1, enemyMaxAP));
+                        player.GetsHit(random.Next(1, enemy.MaxAttack));
                     }
+                }
+                else 
+                {
+                    player.PlayerEarnXP();
                 }
             }
 

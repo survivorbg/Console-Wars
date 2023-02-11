@@ -191,5 +191,16 @@ namespace RPG_Game
                 Console.WriteLine($"{++count} --> {action}");
             }
         }
+        public void PlayerEarnXP()
+        {
+            Experience += 105; //Temporary, lower it after
+            if(Experience>= 100)
+            {
+                Level++;
+                Experience -= 100;
+                MaxAttack *= 5;
+                Console.WriteLine($"Congratulations, Level {Level}! You are stronger now!");
+            }
+        }
     }
 }
