@@ -16,6 +16,7 @@
         /// Determines if this enemy is dead.
         /// </summary>
         public bool IsDead { get; set; }
+        public int MaxAttack { get; set; }  
         /// <summary>
         /// The default constructor.
         /// </summary>
@@ -26,6 +27,7 @@
             Health = 100;
             //Set the enemies name.
             Name = name;
+            MaxAttack = 10;
         }
 
         /// <summary>

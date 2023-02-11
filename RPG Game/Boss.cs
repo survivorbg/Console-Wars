@@ -12,7 +12,7 @@
         {
             //Set the health to be a higher value.
             Health = 150;
-
+            MaxAttack= 17;
 
         }
     }

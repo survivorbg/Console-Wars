@@ -22,9 +22,18 @@ namespace RPG_Game
         /// </summary>
         public bool isDead;
         /// <summary>
-        /// This show if the player is guarding.
+        /// This shows if the player is guarding.
         /// </summary>
         public bool isGuarding;
+        /// <summary>
+        /// This shows the player XP.
+        /// </summary>
+        public double Experience { get; set; }
+        /// <summary>
+        /// Player level.
+        /// </summary>
+        public int Level { get; set; }
+        public int MaxAttack { get; set; }
         /// <summary>
         /// The default constructor.
         /// </summary>
@@ -32,7 +41,11 @@ namespace RPG_Game
         {
             //set the health value to 100.
             Health = 100;
-            
+            //set the starting xp - 0
+            Experience= 0;
+            //set the starting level - 1
+            Level = 1;
+            MaxAttack = 15;
         }
         /// <summary>
         /// This is called when the player is hit.
