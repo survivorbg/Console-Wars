@@ -28,7 +28,7 @@
             Health = 100;
             //Set the enemies name.
             Name = name;
-            MaxAttack = 100;
+            MaxAttack = 10;
         }
 
         /// <summary>
@@ -75,6 +75,11 @@
                 Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
                     "he has {1} health left!", hit_value, Health);
             }
+        }
+        public void EnemyIncrease(int timesIncrease)
+        {
+            MaxAttack += 1*timesIncrease;
+            Health += 5*timesIncrease;
         }
         /// <summary>
         /// Called when the enemy is supposed to be gone.

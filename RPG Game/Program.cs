@@ -15,7 +15,6 @@ namespace RPG_Game
             //Create and store the random class
             Random random = new Random();
 
-
             //Get player's name
             Console.Write("Enter your name: ");
 
@@ -66,12 +65,13 @@ namespace RPG_Game
                 {
                     //Create a variable to trakc the first enemy.
                     Enemy firstEnemy = new Enemy($"{Enemy.TypeEnemies[counter++]} Archenemy");
+                    if(player.Kills > 0)
+                    {
+                        firstEnemy.EnemyIncrease(counter+1);
+                    }
                     //Perform the battle game loop.
                     GameLoop(firstEnemy, random, player, history);
                 }
-                
-
-                //Check if the player is dead.
 
             }
 
@@ -102,15 +102,6 @@ namespace RPG_Game
                 return;
             }
         }
-
-
-
-
-
-
-
-
-
 
 
         /// <summary>
@@ -156,7 +147,7 @@ namespace RPG_Game
                         //Apply the atack damage to the enemy.
 
                         ;
-                        if (random.Next(0, 100) >= 95)
+                        if (random.Next(0, 100) <= player.CritChance) 
                         {
 
                             enemy.GetsHitCritical(random.Next(player.MaxAttack, player.MaxAttack));//TODO 

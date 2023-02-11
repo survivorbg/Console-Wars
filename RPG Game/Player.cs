@@ -35,6 +35,7 @@ namespace RPG_Game
         public int Level { get; set; }
         public int MaxAttack { get; set; }
         public int Kills { get; set; }
+        public int CritChance { get; set; }
         /// <summary>
         /// The default constructor.
         /// </summary>
@@ -48,6 +49,7 @@ namespace RPG_Game
             Level = 1;
             MaxAttack = 45;
             Kills = 0;
+            CritChance = 5;
         }
         /// <summary>
         /// This is called when the player is hit.
@@ -197,6 +199,7 @@ namespace RPG_Game
         {
             Experience += 105; //Temporary, lower it after
             Kills++;
+            CritChance += 2;
             if(Experience>= 100)
             {
                 Level++;
