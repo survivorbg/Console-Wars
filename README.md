@@ -1,4 +1,11 @@
-Got the idea from a youtube tutorial and now making some changes and adding new features.
+
+<br>-11.02.2022
+<br>*changed the whole game loop. Now you must kill 4 enemies , before you get to the boss.
+<br>*now you level up after each kill
+<br>*after each level up , you gain +Attack and +Critchance.
+<br>*as the boss approaches, enemies get stronger +HP , + Attack.
+<br>*removed the "Three Strike Attack", becouse it was unnecessary.
+<br>*changed some visual texts, like enemies names and boss name.
 <br>-28.10.2022-
 <br>*added the possibility to see the statistics from the battles(largest hit,biggest heal etc.)
 <br>*will be called cheater in the battle history, if you've used the cheat.
