@@ -20,6 +20,6 @@
 <br>*added an ability to Heal yourself.
 <br>*added a chance to make a Critical Hit on the enemy, chance to Critical Heal yourself and to be Hit with a Critical.
 
-<img src="\DemoPic1.png" width="100%"/>
-<img src="\DemoPic2.png" width="100%"/>
-<img src="\DemoPic3.png" width="100%"/>
+<img src="/DemoPic1.png" width="100%"/>
+<img src="/DemoPic2.png" width="100%"/>
+<img src="/DemoPic3.png" width="100%"/>
