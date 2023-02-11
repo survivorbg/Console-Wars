@@ -1,6 +1,6 @@
 
 <br>-11.02.2022
-<br>*changed the whole game loop. Now you must kill 4 enemies , 
+<br>*changed the whole game loop. Now you must kill 4 enemies , before you get to the boss.
 <br>*now you level up after each kill
 <br>*after each level up , you gain +Attack and +Critchance.
 <br>*as the boss approaches, enemies get stronger +HP , + Attack.
