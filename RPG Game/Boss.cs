@@ -8,7 +8,7 @@
         /// <summary>
         /// The default constructor.
         /// </summary>
-        public Boss() : base("Big Bee Boss")
+        public Boss() : base("Mighty Wind Boss")
         {
             //Set the health to be a higher value.
             Health = 150;
