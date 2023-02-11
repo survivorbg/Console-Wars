@@ -114,7 +114,7 @@ namespace RPG_Game
         private static void GameLoop(Enemy enemy, Random random, Player player, History history)
         {
             //Write out to the screen about the enemy attack.
-            Console.WriteLine($"{player.Name}, you've encountered the {enemy.Name}!");
+            Console.WriteLine($"\n{player.Name}, you've encountered the {enemy.Name}!");
 
 
 
@@ -143,7 +143,7 @@ namespace RPG_Game
                 {
 
                     case "1":
-                        Console.WriteLine($"{player.Name}, you choose to hit the {enemy.Name} with a Single Attack!");
+                        Console.WriteLine($"\n{player.Name}, you choose to hit the {enemy.Name} with a Single Attack!");
                         //Apply the atack damage to the enemy.
 
                         ;
@@ -158,12 +158,12 @@ namespace RPG_Game
                         }
                         break;
                     case "2":
-                        Console.WriteLine($"{player.Name}, you choose to Defend from the {enemy.Name}!");
+                        Console.WriteLine($"\n{player.Name}, you choose to Defend from the {enemy.Name}!");
                         player.isGuarding = true;
 
                         break;
                     case "3":
-                        Console.WriteLine($"{player.Name}, you choose to Heal!");
+                        Console.WriteLine($"\n{player.Name}, you choose to Heal!");
                         if (random.Next(0, 100) >= 90)
                         {
                             player.GetsCriticalHealed(random.Next(15, 20));
