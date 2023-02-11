@@ -4,6 +4,7 @@
 /// </summary>
     internal class Enemy
     {
+        public static List<string> TypeEnemies = new List<string>() { "Frost","Fire","Earth","Water" };
         /// <summary>
         /// The health of the enemy.
         /// </summary>
@@ -27,7 +28,7 @@
             Health = 100;
             //Set the enemies name.
             Name = name;
-            MaxAttack = 10;
+            MaxAttack = 100;
         }
 
         /// <summary>
@@ -51,7 +52,7 @@
             {
                 //If its not dead , print his health.
                 Console.WriteLine("You hit the enemy with {0} damage and " +
-                    "it has {1} health left!", hit_value, Health);
+                    "he has {1} health left!", hit_value, Health);
             }
         }
         public void GetsHitCritical(int hit_value)
@@ -72,7 +73,7 @@
                 //If its not dead , print his health.
                 Console.Beep(750,100);
                 Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
-                    "it has {1} health left!", hit_value, Health);
+                    "he has {1} health left!", hit_value, Health);
             }
         }
         /// <summary>

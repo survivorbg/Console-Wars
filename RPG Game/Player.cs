@@ -34,6 +34,7 @@ namespace RPG_Game
         /// </summary>
         public int Level { get; set; }
         public int MaxAttack { get; set; }
+        public int Kills { get; set; }
         /// <summary>
         /// The default constructor.
         /// </summary>
@@ -45,7 +46,8 @@ namespace RPG_Game
             Experience= 0;
             //set the starting level - 1
             Level = 1;
-            MaxAttack = 15;
+            MaxAttack = 45;
+            Kills = 0;
         }
         /// <summary>
         /// This is called when the player is hit.
@@ -194,11 +196,12 @@ namespace RPG_Game
         public void PlayerEarnXP()
         {
             Experience += 105; //Temporary, lower it after
+            Kills++;
             if(Experience>= 100)
             {
                 Level++;
                 Experience -= 100;
-                MaxAttack *= 5;
+                MaxAttack += 5;
                 Console.WriteLine($"Congratulations, Level {Level}! You are stronger now!");
             }
         }

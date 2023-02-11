@@ -1,9 +1,13 @@
-﻿namespace RPG_Game
+﻿using System.Diagnostics.Metrics;
+
+namespace RPG_Game
 {
     internal class Program
     {
+        static int counter = 0;
         static void Main(string[] args)
         {
+            
 
             //Create a history variable, so we can track the history.
             History history = new History();
@@ -28,43 +32,48 @@
             Console.WriteLine("Your journey begins now {0}.\n", player.Name);
             Console.WriteLine(new string('-', 120));
 
+            
 
-            //Create a variable to trakc the first enemy.
-            Enemy firstEnemy = new Enemy("Giant Bee Enemy");
-
-
-            //Perform the battle game loop.
-            GameLoop(firstEnemy, random, player,history);
-
-
-            //Check if the player is dead.
-            if (!player.isDead)
+            while (player.isDead == false)
             {
-                //Player is NOT dead
 
-                //Create a variable to track the Boss.
-                Boss boss = new Boss();
-
-                //Perform the battle game loop.
-                GameLoop(boss, random, player, history);
-
-                if (!player.isDead)
+                
+                if (player.Kills == 4 && !player.isDead)
                 {
-                    //You beat the game.
-                    Console.WriteLine("Good Job! You've completed the game!");
+
+                    //Player is NOT dead
+
+                    //Create a variable to track the Boss.
+                    Boss boss = new Boss();
+
+                    //Perform the battle game loop.
+                    GameLoop(boss, random, player, history);
+
+                    if (!player.isDead)
+                    {
+                        //You beat the game.
+                        Console.WriteLine("Good Job! You've completed the game!");
+                        break;
+                    }
+                    else
+                    {
+                        //The game is over.
+                        GameOver();
+                        break;
+                    }
                 }
                 else
                 {
-                    //The game is over.
-                    GameOver();
+                    //Create a variable to trakc the first enemy.
+                    Enemy firstEnemy = new Enemy($"{Enemy.TypeEnemies[counter++]} Archenemy");
+                    //Perform the battle game loop.
+                    GameLoop(firstEnemy, random, player, history);
                 }
-            }
-            else
-            {
-                //Player is dead
-                GameOver();
-            }
+                
 
+                //Check if the player is dead.
+
+            }
 
 
 
@@ -114,7 +123,7 @@
         private static void GameLoop(Enemy enemy, Random random, Player player, History history)
         {
             //Write out to the screen about the enemy attack.
-            Console.WriteLine($"{player.Name}, you have encountered a {enemy.Name}!");
+            Console.WriteLine($"{player.Name}, you've encountered the {enemy.Name}!");
 
 
 
@@ -202,7 +211,7 @@
                         player.GetsHit(random.Next(1, enemy.MaxAttack));
                     }
                 }
-                else 
+                else
                 {
                     player.PlayerEarnXP();
                 }
