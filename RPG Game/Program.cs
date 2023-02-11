@@ -24,7 +24,7 @@
             Console.WriteLine();
 
 
-            // Let the player know his name
+            // Intro
             Console.WriteLine("Your journey begins now {0}.\n", player.Name);
             Console.WriteLine(new string('-', 120));
 
@@ -45,7 +45,6 @@
                 //Create a variable to track the Boss.
                 Boss boss = new Boss();
 
-
                 //Perform the battle game loop.
                 GameLoop(boss, random, player, 17, history);
 
@@ -59,10 +58,6 @@
                     //The game is over.
                     GameOver();
                 }
-
-
-
-
             }
             else
             {
@@ -76,7 +71,7 @@
             string playerWish = Console.ReadLine().ToLower();
             while (playerWish != "h" && playerWish != "s" && playerWish != "0")
             {
-                Console.WriteLine("Invalid input. Do you want to see a history of your actions?");
+                Console.WriteLine("Invalid input. Type again: ");
                 playerWish = Console.ReadLine().ToLower();
             }
 
