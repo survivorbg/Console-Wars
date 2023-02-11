@@ -18,12 +18,9 @@
                     actionType = "Single Attack";
                     break;
                 case "2":
-                    actionType = "Three Strike Attack";
-                    break;
-                case "3":
                     actionType = "Defend";
                     break;
-                case "4":
+                case "3":
                     actionType = "Heal";
                     break;
                 case "kill":

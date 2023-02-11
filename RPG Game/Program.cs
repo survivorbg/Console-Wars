@@ -64,10 +64,14 @@
                 //Player is dead
                 GameOver();
             }
-            //TODO - да го сложа в горния иф 
-            Console.WriteLine("\nHistory -> \"H\" \nStatistics -> \"S\"\nExit - 0");//Ask the player if he want to see the history of his actions during the battles.
 
-            //Store the player wish to see the "Battle History"
+
+
+
+            //Give player the options to choose from Hisory of his actions , statistics or leave the game.
+            Console.WriteLine("\nHistory -> \"H\" \nStatistics -> \"S\"\nExit - 0");
+
+            //Store the player wish to see the "Battle History" or "Statistics"
             string playerWish = Console.ReadLine().ToLower();
             while (playerWish != "h" && playerWish != "s" && playerWish != "0")
             {
@@ -120,10 +124,9 @@
 
                 //Write out to the screan your options
                 Console.WriteLine("What would you like to do ? " +
-                    "\n\n 1.Single Attack " +
-                    "\n 2.Three Strike Attack " +
-                    "\n 3.Defend " +
-                    "\n 4.Heal");
+                    "\n\n 1. Attack " +
+                    "\n 2. Defend " +
+                    "\n 3. Heal");
 
 
                 //Store what action the player choose
@@ -155,31 +158,11 @@
                         }
                         break;
                     case "2":
-                        Console.WriteLine($"{player.Name}, you choose to hit the {enemy.Name} with Three Strike Attack!");
-                        //Loop three time to perform our multi(3) attack.
-
-                        for (int i = 0; i < 3; i++)
-                        {
-                            if (!enemy.IsDead)
-                            {
-                                if (random.Next(0, 100) >= 90)
-                                {
-                                    enemy.GetsHitCritical(random.Next(20, 20));
-                                }
-                                else
-                                {
-                                    enemy.GetsHit(random.Next(1, 15));
-                                }
-                            }
-                        }
-
-                        break;
-                    case "3":
                         Console.WriteLine($"{player.Name}, you choose to Defend from the {enemy.Name}!");
                         player.isGuarding = true;
 
                         break;
-                    case "4":
+                    case "3":
                         Console.WriteLine($"{player.Name}, you choose to Heal!");
                         if (random.Next(0, 100) >= 90)
                         {
@@ -202,7 +185,7 @@
 
                     default:
                         //Tell the player that he entered invalid action.
-                        Console.WriteLine("You choose something else.");
+                        Console.WriteLine("Missed opportunity! Invalid Input! ");
                         break;
 
                 }
