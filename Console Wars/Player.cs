@@ -154,47 +154,6 @@ namespace RPG_Game
         {
             Console.WriteLine($"{Name}, you are dead!");
         }
-        /// <summary>
-        /// Called every time when the player choose an action
-        /// </summary>
-        /// <param name="action_count">action number</param>
-        /// <param name="action">action type</param>
-        /// <returns></returns>
-        public void CollectPlayerActionsForHistory(string action)
-        {
-            var actionType = "";
-            switch (action)
-            {
-                case "1":
-                    actionType = "Single Attack";
-                    break;
-                case "2":
-                    actionType = "Three Strike Attack";
-                    break;
-                case "3":
-                    actionType = "Defend";
-                    break;
-                case "4":
-                    actionType = "Heal";
-                    break;
-                default:
-                    actionType = "Invalid Action";
-                    break;
-            }
-            playerActions.Add(actionType);
-        }
-        public void ShowHistoryOfPlayerActions()
-        {
-            var count = 0;
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("HISTORY OF PLAYER ACTIONS: ");
-            Console.WriteLine();
-            foreach (var action in playerActions)
-            {
-                Console.WriteLine($"{++count} --> {action}");
-            }
-        }
         public void PlayerEarnXP()
         {
             Experience += 105; //Temporary, lower it after

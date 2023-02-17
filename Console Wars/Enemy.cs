@@ -89,33 +89,6 @@
             //Write to the console that the enemy is gone.
             Console.WriteLine("{0} is gone!", Name);
         }
-
-
-
-
-        /// <summary>
-        /// Triple Atack - REMOVED FOR NOW
-        /// </summary>
-        /// <param name="hit_value"></param>
-       /* public void GetsTripleHit(int hit_value)
-        {
-            //Subtract the hit value from the health.
-            Health -= hit_value;
-
-
-            //Check if the enemy is dead.
-            if (Health <= 0)
-            {
-                //The enemy is dead
-                IsDead = true;
-                Gone();
-            }
-            else
-            {
-                //If its not dead , print his health.
-                Console.WriteLine("You hit the enemy with {0} damage and " +
-                    "it has {1} health left!", hit_value, Health);
-            }
-        }*/
     }
+    
 }

@@ -91,10 +91,12 @@ namespace RPG_Game
             if (playerWish == "h")
             {
                 history.ShowHistoryOfPlayerActions();
+                Console.ReadKey();
             }
             else if (playerWish == "s")
             {
                 Statistics.ShowStatistics();
+                Console.ReadKey();
             }
             else if (playerWish == "0")
             {
