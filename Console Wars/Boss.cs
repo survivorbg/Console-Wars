@@ -8,11 +8,12 @@
         /// <summary>
         /// The default constructor.
         /// </summary>
-        public Boss() : base("Mighty Wind Boss")
+        public Boss() 
         {
             //Set the health to be a higher value.
             Health = 150;
             MaxAttack= 17;
+            Name = "Mighty Wind Boss";
 
         }
     }

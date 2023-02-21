@@ -64,7 +64,7 @@ namespace RPG_Game
                 else
                 {
                     //Create a variable to trakc the first enemy.
-                    Enemy firstEnemy = new Enemy($"{Enemy.TypeEnemies[counter++]} Archenemy");
+                    Enemy firstEnemy = new Enemy();
                     if(player.Kills > 0)
                     {
                         firstEnemy.EnemyIncrease(counter+1);

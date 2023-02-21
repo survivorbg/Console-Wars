@@ -4,33 +4,31 @@
 /// </summary>
     internal class Enemy
     {
-        public static List<string> TypeEnemies = new List<string>() { "Frost","Fire","Earth","Water" };
-        /// <summary>
-        /// The health of the enemy.
-        /// </summary>
+        //Enemy Name 
+        public string Name { get; protected set; }
+        //Enemy Hp
         public int Health { get; set; }
-        /// <summary>
-        /// The name of the enemy.
-        /// </summary>
-        public string Name { get; set; }
-        /// <summary>
-        /// Determines if this enemy is dead.
-        /// </summary>
+        //If enemy is dead
         public bool IsDead { get; set; }
         public int MaxAttack { get; set; }  
-        /// <summary>
-        /// The default constructor.
-        /// </summary>
-        /// <param name="name">The name we want to give to this enemy.</param>
-        public Enemy(string name)
+
+        //Default Constructor
+        public Enemy()
         {
-            //Set the enemies' health.
+            //Default enemy hp
             Health = 100;
-            //Set the enemies name.
-            Name = name;
+            //Set the enemy name.
+            this.Name = GenerateName();
+            //Set enemy max attack.
             MaxAttack = 10;
         }
 
+        //Generates name for the enemy from the Enumerator
+        private static string GenerateName()
+        {
+            Random random = new Random();
+            return (EnemyCombination)random.Next(0, 4) + " " + (EnemyCombination)random.Next(4, 8);
+        }
         /// <summary>
         /// This gets called when the enemy is hit.
         /// </summary>
@@ -89,6 +87,18 @@
             //Write to the console that the enemy is gone.
             Console.WriteLine("{0} is gone!", Name);
         }
+
     }
-    
+    public enum EnemyCombination
+    {
+        Frost = 0,
+        Fire = 1,
+        Earth = 2,
+        Water = 3,
+        Cultist = 4,
+        Enforcer = 5,
+        Warlock = 6,
+        Voidwalker = 7
+    }
+
 }
