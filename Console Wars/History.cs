@@ -6,9 +6,12 @@
         /// This list will collect all the players actions during the game.
         /// </summary>
         public List<string> playerActions = new List<string>();
-       
+        public  int Attacks { get; protected set; } = 0;
+        public  int Defends { get; protected set; } = 0;
+        public  int Heals { get; protected set; } = 0;
+
         //TODO write definitions of the methods
-       
+
         public void CollectPlayerActionsForHistory(string action)
         {
             var actionType = "";
@@ -16,12 +19,15 @@
             {
                 case "1":
                     actionType = "Single Attack";
+                    this.Attacks++;
                     break;
                 case "2":
                     actionType = "Defend";
+                    this.Defends++;
                     break;
                 case "3":
                     actionType = "Heal";
+                    this.Heals++;
                     break;
                 case "kill":
                     actionType = "CHEATING!!!!!";
@@ -32,10 +38,6 @@
             }
             playerActions.Add(actionType);
         }
-        //public void CollectPlayerDamagesForHistory(int hit_value)
-        //{
-        //    playerDamages.Add(hit_value);
-        //}
 
         public void ShowHistoryOfPlayerActions()
         {
@@ -48,7 +50,7 @@
             {
                 Console.WriteLine($"{++count} --> {action}");
             }
-
+            Console.WriteLine($"TOTAL: A{Attacks} D{Defends} H{Heals}");
         }
 
 

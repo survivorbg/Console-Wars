@@ -4,7 +4,6 @@ namespace RPG_Game
 {
     internal class Program
     {
-        static int counter = 0;
         static void Main(string[] args)
         {
             
@@ -63,12 +62,9 @@ namespace RPG_Game
                 }
                 else
                 {
-                    //Create a variable to trakc the first enemy.
+                    //Create a variable to track the first enemy.
                     Enemy firstEnemy = new Enemy();
-                    if(player.Kills > 0)
-                    {
-                        firstEnemy.EnemyIncrease(counter+1);
-                    }
+
                     //Perform the battle game loop.
                     GameLoop(firstEnemy, random, player, history);
                 }

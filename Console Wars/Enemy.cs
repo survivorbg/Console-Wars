@@ -7,22 +7,29 @@
         //Enemy Name 
         public string Name { get; protected set; }
         //Enemy Hp
-        public int Health { get; set; }
+        public int Health { get; protected set; } = 100;
         //If enemy is dead
         public bool IsDead { get; set; }
-        public int MaxAttack { get; set; }  
+        //Enemy Max Attack
+        public int MaxAttack { get; protected set; } = 10;
+        public static int Level = 0;
+
 
         //Default Constructor
         public Enemy()
         {
-            //Default enemy hp
-            Health = 100;
-            //Set the enemy name.
+            //Generate name for the enemy
             this.Name = GenerateName();
-            //Set enemy max attack.
-            MaxAttack = 10;
+            //Set the HP and MaxAttack according to the level of the enemy
+            EnemyIncrease();
+            Enemy.Level++;
         }
-
+        //Method to set the HP and the maxAtack according to the enemy level.
+        private void EnemyIncrease()
+        {
+            this.MaxAttack = this.MaxAttack + Level;
+            this.Health = this.Health +(5 * Level);
+        }
         //Generates name for the enemy from the Enumerator
         private static string GenerateName()
         {
@@ -74,11 +81,7 @@
                     "he has {1} health left!", hit_value, Health);
             }
         }
-        public void EnemyIncrease(int timesIncrease)
-        {
-            MaxAttack += 1*timesIncrease;
-            Health += 5*timesIncrease;
-        }
+        
         /// <summary>
         /// Called when the enemy is supposed to be gone.
         /// </summary>
