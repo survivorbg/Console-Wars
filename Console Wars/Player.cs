@@ -55,61 +55,61 @@ namespace RPG_Game
         /// This is called when the player is hit.
         /// </summary>
         /// <param name="hit_value">The damage that player takes.</param>
-        public void GetsHit(int hit_value)
+        public void GetsHit(int hitValue)
         {
             //Check if the player is guarding.
             if (isGuarding)
             {
                 //Print that player guarded the attack.
-                Console.WriteLine("{0} just guarded the blow!", Name);
+                Console.WriteLine($"{Name} just guarded the blow! You blocked {hitValue} damage!");
                 isGuarding = false; //reset the guarding stance
             }
             else
             {
-                Health -= hit_value;
-                Statistics.CollectEnemyDamage(hit_value);
+                Health -= hitValue;
+                Statistics.CollectEnemyDamage(hitValue);
                 //Check if the player is dead
                 if (Health <= 0)
                 {
                     //Set the boolean to true.
                     isDead = true;
                     //Print the player is dead
-                    Console.WriteLine("The enemy hit you with {0} damage!", hit_value);
+                    Console.WriteLine($"The enemy hit you with {hitValue} damage!");
                     Gone();
                 }
                 else
                 {
-                    Console.WriteLine("You were hit with {0} damage and you have {1} health left.", hit_value, Health);
+                    Console.WriteLine($"You were hit with {hitValue} damage and you have {Health} health left.");
 
                 }
             }
         }
 
-        public void GetsCriticallyHit(int hit_value)
+        public void GetsCriticallyHit(int hitValue)
         {
             //Check if the player is guarding.
             if (isGuarding)
             {
                 //Print that player guarded the attack.
-                Console.WriteLine("{0} just guarded the blow!", Name);
+                Console.WriteLine($"{Name} just guarded the blow! You blocked {hitValue} damage!");
                 isGuarding = false;
             }
             else
             {
-                Health -= hit_value;
-                Statistics.CollectEnemyDamage(hit_value);
+                Health -= hitValue;
+                Statistics.CollectEnemyDamage(hitValue);
                 //Check if the player is dead
                 if (Health <= 0)
                 {
                     //Set the boolean to true.
                     isDead = true;
                     //Print the player is dead
-                    Console.WriteLine("The enemy CRITICALLY hit you with {0} damage!", hit_value);
+                    Console.WriteLine($"The enemy CRITICALLY hit you with {hitValue} damage!");
                     Gone();
                 }
                 else
                 {
-                    Console.WriteLine("You were CRITICALLY hit with {0} damage and you have {1} health left.", hit_value, Health);
+                    Console.WriteLine($"You were CRITICALLY hit with {hitValue} damage and you have {Health} health left.");
                 }
             }
         }
@@ -117,34 +117,34 @@ namespace RPG_Game
         /// This is called when the player is healed.
         /// </summary>
         /// <param name="healed_value">The amount that player is healed with.</param>
-        public void GetsHealed(int healed_value)
+        public void GetsHealed(int healedValue)
         {
-            Health += healed_value;
-            Statistics.CollectHeal(healed_value);
+            Health += healedValue;
+            Statistics.CollectHeal(healedValue);
             if (Health >= 100)
             {
                 Health = 100;
-                Console.WriteLine("You were healed with {0} points and now you have MAX HP(100)!", healed_value);
+                Console.WriteLine($"You were healed with {healedValue} points and now you have MAX HP(100)!");
 
             }
             else
             {
-                Console.WriteLine("You were healed with {0} points and now you have {1} health.", healed_value, Health);
+                Console.WriteLine($"You were healed with {healedValue} points and now you have {Health} health.");
             }
         }
-        public void GetsCriticalHealed(int healed_value)
+        public void GetsCriticalHealed(int healedValue)
         {
-            Statistics.CollectHeal(healed_value);
-            Health += healed_value;
+            Statistics.CollectHeal(healedValue);
+            Health += healedValue;
             if (Health >= 100)
             {
                 Health = 100;
-                Console.WriteLine("You were CRITICALLY healed with {0} points and now you have MAX HP(100)!", healed_value);
+                Console.WriteLine($"You were CRITICALLY healed with {healedValue} points and now you have MAX HP(100)!");
 
             }
             else
             {
-                Console.WriteLine("You were CRITICALLY healed with {0} points and now you have {1} health.", healed_value, Health);
+                Console.WriteLine($"You were CRITICALLY healed with {healedValue} points and now you have {Health} health.");
             }
         }
         /// <summary>

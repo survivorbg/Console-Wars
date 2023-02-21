@@ -54,8 +54,8 @@
 
 
         }
-        //Enemy gets hit by normal attack
-        public void GetsHit(int hitValue,bool isCritical)
+        //Enemy gets hit 
+        protected void GetsHit(int hitValue,bool isCritical)
         {
             //Subtract the hit value from the health.
             Health -= hitValue;
@@ -78,7 +78,7 @@
                 }
                 else
                 {
-                    //If its not dead , print his health.
+                    //If its not dead , print his health annd announce - its critical.
                     Console.Beep(750, 100);
                     Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
                         "he has {1} health left!", hitValue, Health);
