@@ -143,17 +143,7 @@ namespace RPG_Game
                     case "1":
                         Console.WriteLine($"\n{player.Name}, you choose to hit the {enemy.Name} with a Single Attack!");
                         //Apply the atack damage to the enemy.
-
-                        ;
-                        if (random.Next(0, 100) <= player.CritChance) 
-                        {
-
-                            enemy.GetsHitCritical(random.Next(player.MaxAttack, player.MaxAttack));//TODO 
-                        }
-                        else
-                        {
-                            enemy.GetsHit(random.Next(1, player.MaxAttack));
-                        }
+                        enemy.GetsHitNormalOrCrit(player.CritChance, player.MaxAttack);
                         break;
                     case "2":
                         Console.WriteLine($"\n{player.Name}, you choose to Defend from the {enemy.Name}!");

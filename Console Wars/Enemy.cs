@@ -36,15 +36,30 @@
             Random random = new Random();
             return (EnemyCombination)random.Next(0, 4) + " " + (EnemyCombination)random.Next(4, 8);
         }
-        /// <summary>
-        /// This gets called when the enemy is hit.
-        /// </summary>
-        /// <param name="hit_value">The amount of damage the enemy will take.</param>
-        public void GetsHit(int hit_value)
+
+        public void GetsHitNormalOrCrit(int playerCritChance, int playerMaxAttack)
+        {
+            Random random = new Random();
+            bool isCritical = false;
+            if (random.Next(0, 100) <= playerCritChance)
+            {
+                isCritical = true;
+                GetsHit(playerMaxAttack,isCritical);
+            }
+            else
+            {
+                int hitValue = random.Next(1, playerMaxAttack);
+                GetsHit(hitValue,isCritical);
+            }
+
+
+        }
+        //Enemy gets hit by normal attack
+        public void GetsHit(int hitValue,bool isCritical)
         {
             //Subtract the hit value from the health.
-            Health -= hit_value;
-            Statistics.CollectDamageForSingleAttack(hit_value);
+            Health -= hitValue;
+            Statistics.CollectDamageForSingleAttack(hitValue);
 
             //Check if the enemy is dead.
             if (Health <= 0)
@@ -55,33 +70,21 @@
             }
             else
             {
-                //If its not dead , print his health.
-                Console.WriteLine("You hit the enemy with {0} damage and " +
-                    "he has {1} health left!", hit_value, Health);
+                if (!isCritical)
+                {
+                    //If its not dead , print his health.
+                    Console.WriteLine("You hit the enemy with {0} damage and " +
+                        "he has {1} health left!", hitValue, Health);
+                }
+                else
+                {
+                    //If its not dead , print his health.
+                    Console.Beep(750, 100);
+                    Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
+                        "he has {1} health left!", hitValue, Health);
+                }
             }
         }
-        public void GetsHitCritical(int hit_value)
-        {
-            //Subtract the hit value from the health.
-            Health -= hit_value;
-            Statistics.CollectDamageForSingleAttack(hit_value);
-
-            //Check if the enemy is dead.
-            if (Health <= 0)
-            {
-                //The enemy is dead
-                IsDead = true;
-                Gone();
-            }
-            else
-            {
-                //If its not dead , print his health.
-                Console.Beep(750,100);
-                Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
-                    "he has {1} health left!", hit_value, Health);
-            }
-        }
-        
         /// <summary>
         /// Called when the enemy is supposed to be gone.
         /// </summary>
