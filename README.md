@@ -1,6 +1,7 @@
 
 <br>-21.02.2022
 <br>*new randomly generated enemy names
+<br>*if you decide to Defend , it shows you how much damaged you've blocked.
 <br>*enemies attack and hp increase accordingly to their level.
 <br>*made some code optimization, changed some of the access modifiers(still work to do here).
 <br>-11.02.2022
