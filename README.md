@@ -1,4 +1,8 @@
 
+<br>-21.02.2022
+<br>*new randomly generated enemy names
+<br>*enemies attack and hp increase accordingly to their level.
+<br>*made some code optimization, changed some of the access modifiers(still work to do here).
 <br>-11.02.2022
 <br>*changed the whole game loop. Now you must kill 4 enemies , before you get to the boss.
 <br>*now you level up after each kill
