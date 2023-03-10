@@ -1,29 +1,34 @@
 
-<br>-21.02.2022
-<br>*new randomly generated enemy names
-<br>*if you decide to Defend , it shows you how much damage you've blocked.
-<br>*enemies attack and hp increase accordingly to their level.
-<br>*made some code optimization, changed some of the access modifiers(still work to do here).
-<br>-11.02.2022
-<br>*changed the whole game loop. Now you must kill 4 enemies , before you get to the boss.
-<br>*now you level up after each kill
-<br>*after each level up , you gain +Attack and +Critchance.
-<br>*as the boss approaches, enemies get stronger +HP , + Attack.
-<br>*removed the "Three Strike Attack", becouse it was unnecessary.
-<br>*changed some visual texts, like enemies names and boss name.
-<br>-28.10.2022-
-<br>*added the possibility to see the statistics from the battles(largest hit,biggest heal etc.)
-<br>*will be called cheater in the battle history, if you've used the cheat.
-<br>-27.10.2022-
-<br>*added the possibility to see history of your actions type during the battle , after the game is over.
-<br>*added the possibility to cheat and kill the enemy in one hit.
-<br>*added basic sound alert when you make a critical hit.
-<br>*small cosmetic changes and bugfixes.
-<br>-15.10.2022-
-<br>*added an ability to Triple Hit the enemies.
-<br> *added an ability to Defend a blow.
-<br>*added an ability to Heal yourself.
-<br>*added a chance to make a Critical Hit on the enemy, chance to Critical Heal yourself and to be Hit with a Critical.
+<br>21.02.2022
+<br>*New randomly generated enemy names.
+<br>*If you decide to "Defend", it shows you how much damage you've blocked.
+<br>*Enemies' attack and HP increase accordingly to their level.
+<br>*Made some code optimization and changed some of the access modifiers (still work to do here).
+<br>
+<br>11.02.2022
+11.02.2022
+<br>*Changed the whole game loop. Now you must kill four enemies before you get to the boss.
+<br>*Now you level up after each kill.
+<br>*After each level up, you gain +Attack and +Critchance.
+<br>*As the boss approaches, enemies get stronger (+HP, +Attack).
+<br>*Removed the "Three Strike Attack" because it was unnecessary.
+<br>*Changed some visual texts, like enemies' names and the boss's name.
+<br>
+<br>28.10.2022
+<br>*Added the possibility to see the statistics from the battles (largest hit, biggest heal, etc.).
+<br>*You will be called a cheater in the battle history if you've used the cheat.
+<br>
+<br>27.10.2022
+<br>*Added the possibility to see the history of your actions during the battle after the game is over.
+<br>*Added the possibility to cheat and kill the enemy in one hit.
+<br>*Added basic sound alerts when you make a critical hit.
+<br>*Made small cosmetic changes and bug fixes.
+<br>
+<br>15.10.2022
+<br>*Added the ability to Triple-Hit the enemies.
+<br>*Added the ability to Defend a blow.
+<br>*Added the ability to Heal yourself.
+<br>*Added a chance to make a critical hit on the enemy, a chance to critically heal yourself, and a chance to be hit with a critical.
 
 <img src="/DemoPic1.png" width="60%"/>
 <br>
