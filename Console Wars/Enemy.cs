@@ -13,8 +13,10 @@
         //Enemy Max Attack
         public int MaxAttack { get; protected set; } = 10;
         public static int Level = 0;
-
-
+        //If There is an active DoT on the enemy 
+        public bool ActiveDoT { get; set; }
+        //Follows the remaining round for the DoT
+        public int RemainingRounds { get; protected set; } = 3; //when new spawn it will have 3 remaining rounds again
         //Default Constructor
         public Enemy()
         {
@@ -54,6 +56,40 @@
 
 
         }
+        //When in combination with normal attack.
+        public void DoTAttack(bool isDotActive,int hitValue)
+        {
+            if (isDotActive)
+            {
+                Health -= 5;
+                RemainingRounds--;
+            }
+        }
+        //When you try to apply DoT when you already have an active DoT
+        public void DoTAttack()
+        {
+            Console.WriteLine($"\nInvalid action! You still have an active DoT from previous round!");
+            Health -= 5;
+            RemainingRounds--;
+            if (Health <= 0)
+            {
+                //If the enemy dies before the DoT ends
+                ActiveDoT = false;
+                //The enemy is dead
+                IsDead = true;
+                Gone();
+            }
+            else
+            {
+                Console.WriteLine($"You hit the enemy with 5 damage over time and he has {Health} health left!");
+                if (RemainingRounds == 0)
+                {
+                    Console.WriteLine("DoT has ended!");
+                    ActiveDoT = false;
+                    RemainingRounds = 3;
+                }
+            }
+        }
         //Enemy gets hit 
         protected void GetsHit(int hitValue,bool isCritical)
         {
@@ -61,27 +97,62 @@
             Health -= hitValue;
             Statistics.CollectDamageForSingleAttack(hitValue);
 
+            DoTAttack(ActiveDoT, hitValue);
+
             //Check if the enemy is dead.
             if (Health <= 0)
             {
+                //If the enemy dies before the DoT ends
+                ActiveDoT = false;
                 //The enemy is dead
                 IsDead = true;
                 Gone();
             }
             else
             {
-                if (!isCritical)
+                if (ActiveDoT)
                 {
-                    //If its not dead , print his health.
-                    Console.WriteLine("You hit the enemy with {0} damage and " +
-                        "he has {1} health left!", hitValue, Health);
+                    if (!isCritical)
+                    {
+
+                        //If its not dead , print his health.
+                        Console.WriteLine($"You hit the enemy with {hitValue}(+5 DoT) damage and he has {Health} health left!");
+                        if (RemainingRounds == 0)
+                        {
+                            Console.WriteLine("DoT has ended!");
+                            ActiveDoT = false;
+                            RemainingRounds = 3;
+                        }
+                    }
+                    else
+                    {
+                        //If its not dead , print his health annd announce - its critical.
+                        Console.Beep(750, 100);
+                        Console.WriteLine($"CRITICAL! You hit the enemy with {hitValue}(+5 DoT) damage and he has {Health} health left!");
+                        if (RemainingRounds == 0)
+                        {
+                            Console.WriteLine("DoT has ended!");
+                            ActiveDoT = false;
+                            RemainingRounds = 3;
+                        }
+                    }
                 }
                 else
                 {
-                    //If its not dead , print his health annd announce - its critical.
-                    Console.Beep(750, 100);
-                    Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
-                        "he has {1} health left!", hitValue, Health);
+                    if (!isCritical)
+                    {
+
+                        //If its not dead , print his health.
+                        Console.WriteLine("You hit the enemy with {0} damage and " +
+                            "he has {1} health left!", hitValue, Health);
+                    }
+                    else
+                    {
+                        //If its not dead , print his health annd announce - its critical.
+                        Console.Beep(750, 100);
+                        Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
+                            "he has {1} health left!", hitValue,Health);
+                    }
                 }
             }
         }
@@ -93,7 +164,7 @@
             //Write to the console that the enemy is gone.
             Console.WriteLine("{0} is gone!", Name);
         }
-
+       
     }
     public enum EnemyCombination
     {
@@ -106,5 +177,5 @@
         Warlock = 6,
         Voidwalker = 7
     }
-
+    
 }

@@ -112,7 +112,7 @@ namespace RPG_Game
         private static void GameLoop(Enemy enemy, Random random, Player player, History history)
         {
             //Write out to the screen about the enemy attack.
-            Console.WriteLine($"\n{player.Name}, you've encountered the {enemy.Name}!");
+            Console.WriteLine($"{player.Name}, you've encountered the {enemy.Name}!");
 
 
 
@@ -124,7 +124,8 @@ namespace RPG_Game
                 Console.WriteLine("What would you like to do ? " +
                     "\n\n 1. Attack " +
                     "\n 2. Defend " +
-                    "\n 3. Heal");
+                    "\n 3. Heal" +
+                    "\n 4. DoT");
 
 
                 //Store what action the player choose
@@ -163,6 +164,18 @@ namespace RPG_Game
 
                         }
 
+                        break;
+                    case "4":
+                        if (!enemy.ActiveDoT)
+                        {
+                            Console.WriteLine($"\n{player.Name}, you choose to hit the {enemy.Name} with a DoT! It will last 3 rounds.");
+                            enemy.ActiveDoT = true;
+                        }
+                        else
+                        {
+                            enemy.DoTAttack();
+                        }
+                        
                         break;
 
                     //cheatcode - if you enter command Kill - the enemy is automatically dead.
