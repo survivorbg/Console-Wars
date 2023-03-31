@@ -13,6 +13,7 @@
             Random random = new Random();
 
             // Get player's name and create the player character.
+            Console.Write("Enter your name: ");
             Player player = new Player()
             {
                 Name = Console.ReadLine()
