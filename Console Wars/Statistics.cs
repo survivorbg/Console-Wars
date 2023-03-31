@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-
-namespace RPG_Game
+﻿namespace Console_Wars
 {
     internal class Statistics
     {
@@ -24,7 +17,7 @@ namespace RPG_Game
 
         public static void CollectDamageForSingleAttack(int hit_value)
         {
-            playerDamageFromSingleAttack.Add(hit_value); 
+            playerDamageFromSingleAttack.Add(hit_value);
         }
         public static void CollectHeal(int healed_value)
         {
@@ -36,21 +29,21 @@ namespace RPG_Game
         }
         public static void ShowStatistics()
         {
-                Console.WriteLine();
-                Console.WriteLine("STATISTICS:");
-                Console.WriteLine();
-                if (playerDamageFromSingleAttack.Count > 0) {Console.WriteLine($"Player's biggest hit: {playerDamageFromSingleAttack.Max()}");}
-                else { Console.WriteLine("Тhe player has no damage recorded."); }
-                if (playerHeals.Count > 0) { Console.WriteLine($"Player's biggest heal: {playerHeals.Max()}"); } 
-                else { Console.WriteLine("Тhe player has no healing recorded."); }
-                if (enemyDamage.Count > 0) { Console.WriteLine($"Enemy's biggest hit: {enemyDamage.Max()}"); }
-                else { Console.WriteLine("Тhe enemy has no damage recorded."); }
-                if (playerDamageFromSingleAttack.Count > 0) { Console.WriteLine($"Player's average damage: {playerDamageFromSingleAttack.Average():f2}"); }
-                else { Console.WriteLine("Тhe player has no damage recorded."); }
-                if (playerHeals.Count > 0) { Console.WriteLine($"Player's average heal: {playerHeals.Average():f2}"); }
-                else { Console.WriteLine("Тhe player has no healing recorded."); }
-                if (enemyDamage.Count > 0) { Console.WriteLine($"Enemy's average damage: {enemyDamage.Average():f2}"); }
-                else { Console.WriteLine("Тhe enemy has no damage recorded."); }
+            Console.WriteLine();
+            Console.WriteLine("STATISTICS:");
+            Console.WriteLine();
+            if (playerDamageFromSingleAttack.Count > 0) { Console.WriteLine($"Player's biggest hit: {playerDamageFromSingleAttack.Max()}"); }
+            else { Console.WriteLine("Тhe player has no damage recorded."); }
+            if (playerHeals.Count > 0) { Console.WriteLine($"Player's biggest heal: {playerHeals.Max()}"); }
+            else { Console.WriteLine("Тhe player has no healing recorded."); }
+            if (enemyDamage.Count > 0) { Console.WriteLine($"Enemy's biggest hit: {enemyDamage.Max()}"); }
+            else { Console.WriteLine("Тhe enemy has no damage recorded."); }
+            if (playerDamageFromSingleAttack.Count > 0) { Console.WriteLine($"Player's average damage: {playerDamageFromSingleAttack.Average():f2}"); }
+            else { Console.WriteLine("Тhe player has no damage recorded."); }
+            if (playerHeals.Count > 0) { Console.WriteLine($"Player's average heal: {playerHeals.Average():f2}"); }
+            else { Console.WriteLine("Тhe player has no healing recorded."); }
+            if (enemyDamage.Count > 0) { Console.WriteLine($"Enemy's average damage: {enemyDamage.Average():f2}"); }
+            else { Console.WriteLine("Тhe enemy has no damage recorded."); }
         }
 
     }

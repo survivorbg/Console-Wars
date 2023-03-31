@@ -1,7 +1,8 @@
-﻿namespace RPG_Game
-{/// <summary>
-/// Represent the base elements of an enemy;
-/// </summary>
+﻿namespace Console_Wars
+{
+    /// <summary>
+    /// Represent the base elements of an enemy;
+    /// </summary>
     internal class Enemy
     {
         //Enemy Name 
@@ -30,7 +31,7 @@
         private void EnemyIncrease()
         {
             this.MaxAttack = this.MaxAttack + Level;
-            this.Health = this.Health +(5 * Level);
+            this.Health = this.Health + (5 * Level);
         }
         //Generates name for the enemy from the Enumerator
         private static string GenerateName()
@@ -46,18 +47,18 @@
             if (random.Next(0, 100) <= playerCritChance)
             {
                 isCritical = true;
-                GetsHit(playerMaxAttack,isCritical);
+                GetsHit(playerMaxAttack, isCritical);
             }
             else
             {
                 int hitValue = random.Next(1, playerMaxAttack);
-                GetsHit(hitValue,isCritical);
+                GetsHit(hitValue, isCritical);
             }
 
 
         }
         //When in combination with normal attack.
-        public void DoTAttack(bool isDotActive,int hitValue)
+        public void DoTAttack(bool isDotActive, int hitValue)
         {
             if (isDotActive)
             {
@@ -91,7 +92,7 @@
             }
         }
         //Enemy gets hit 
-        protected void GetsHit(int hitValue,bool isCritical)
+        protected void GetsHit(int hitValue, bool isCritical)
         {
             //Subtract the hit value from the health.
             Health -= hitValue;
@@ -151,7 +152,7 @@
                         //If its not dead , print his health annd announce - its critical.
                         Console.Beep(750, 100);
                         Console.WriteLine("CRITICAL! You hit the enemy with {0} damage and " +
-                            "he has {1} health left!", hitValue,Health);
+                            "he has {1} health left!", hitValue, Health);
                     }
                 }
             }
@@ -164,7 +165,7 @@
             //Write to the console that the enemy is gone.
             Console.WriteLine("{0} is gone!", Name);
         }
-       
+
     }
     public enum EnemyCombination
     {
@@ -177,5 +178,5 @@
         Warlock = 6,
         Voidwalker = 7
     }
-    
+
 }

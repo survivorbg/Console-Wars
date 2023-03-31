@@ -1,13 +1,12 @@
-﻿using System.Security.Cryptography;
-
-namespace RPG_Game
+﻿namespace Console_Wars
 {
+
     /// <summary>
     /// This class represents the playable character.
     /// </summary>
     public class Player
     {
-        
+
         public List<string> playerActions = new List<string>();
         /// <summary>
         /// This represents the players health values.
@@ -44,7 +43,7 @@ namespace RPG_Game
             //set the health value to 100.
             Health = 100;
             //set the starting xp - 0
-            Experience= 0;
+            Experience = 0;
             //set the starting level - 1
             Level = 1;
             MaxAttack = 45;
@@ -159,7 +158,7 @@ namespace RPG_Game
             Experience += 105; //Temporary, lower it after
             Kills++;
             CritChance += 2;
-            if(Experience>= 100)
+            if (Experience >= 100)
             {
                 Level++;
                 Experience -= 100;

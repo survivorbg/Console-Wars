@@ -1,14 +1,15 @@
-﻿namespace RPG_Game
+﻿namespace Console_Wars
 {
+
     public class History
     {
         /// <summary>
         /// This list will collect all the players actions during the game.
         /// </summary>
         public List<string> playerActions = new List<string>();
-        public  int Attacks { get; protected set; } = 0;
-        public  int Defends { get; protected set; } = 0;
-        public  int Heals { get; protected set; } = 0;
+        public int Attacks { get; protected set; } = 0;
+        public int Defends { get; protected set; } = 0;
+        public int Heals { get; protected set; } = 0;
 
         //TODO write definitions of the methods
 

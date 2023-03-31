@@ -1,24 +1,18 @@
-﻿using System.Diagnostics.Metrics;
-
-namespace RPG_Game
+﻿namespace Console_Wars
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            
 
-            //Create a history variable, so we can track the history.
+
+            // Create a history variable to track the game history.
             History history = new History();
 
             //Create and store the random class
             Random random = new Random();
 
-            //Get player's name
-            Console.Write("Enter your name: ");
-
-
-            //Create the player character
+            // Get player's name and create the player character.
             Player player = new Player()
             {
                 Name = Console.ReadLine()
@@ -26,22 +20,19 @@ namespace RPG_Game
             Console.WriteLine();
 
 
-            // Intro
+            // Print the game intro.
             Console.WriteLine("Your journey begins now {0}.\n", player.Name);
             Console.WriteLine(new string('-', 120));
 
-            
 
-            while (player.isDead == false)
+
+            while (!player.isDead)
             {
 
-                
+                // If the player killed four enemies, initiate a boss battle.
                 if (player.Kills == 4 && !player.isDead)
                 {
-
-                    //Player is NOT dead
-
-                    //Create a variable to track the Boss.
+                    // Create a variable to track the Boss enemy.
                     Boss boss = new Boss();
 
                     //Perform the battle game loop.
@@ -49,13 +40,13 @@ namespace RPG_Game
 
                     if (!player.isDead)
                     {
-                        //You beat the game.
+                        // The player won the game.
                         Console.WriteLine("Good Job! You've completed the game!");
                         break;
                     }
                     else
                     {
-                        //The game is over.
+                        // The player lost the game.
                         GameOver();
                         break;
                     }
@@ -76,25 +67,27 @@ namespace RPG_Game
             //Give player the options to choose from Hisory of his actions , statistics or leave the game.
             Console.WriteLine("\nHistory -> \"H\" \nStatistics -> \"S\"\nExit - 0");
 
-            //Store the player wish to see the "Battle History" or "Statistics"
-            string playerWish = Console.ReadLine().ToLower();
-            while (playerWish != "h" && playerWish != "s" && playerWish != "0")
+            // Store the player's choice to see the "Battle History" or "Statistics".
+            string playerChoice = Console.ReadLine().ToLower();
+
+            // Validate the player's input.
+            while (playerChoice != "h" && playerChoice != "s" && playerChoice != "0")
             {
                 Console.WriteLine("Invalid input. Type again: ");
-                playerWish = Console.ReadLine().ToLower();
+                playerChoice = Console.ReadLine().ToLower();
             }
-
-            if (playerWish == "h")
+            // Show the player's requested information.
+            if (playerChoice == "h")
             {
                 history.ShowHistoryOfPlayerActions();
                 Console.ReadKey();
             }
-            else if (playerWish == "s")
+            else if (playerChoice == "s")
             {
                 Statistics.ShowStatistics();
                 Console.ReadKey();
             }
-            else if (playerWish == "0")
+            else if (playerChoice == "0")
             {
                 Console.WriteLine("THANKS FOR PLAYING!");
                 return;
@@ -108,10 +101,10 @@ namespace RPG_Game
         /// <param name="enemy">The enemy which the player will attack.</param>
         /// <param name="random">The random number generator we will use to generate random numbers.</param>
         /// <param name="player">The player that we are playing as.</param>
-        /// <param name="max_attack_power">The max attack power the enemy has to attack player.</param>
+        /// <param name="history">The game history tracker.</param>
         private static void GameLoop(Enemy enemy, Random random, Player player, History history)
         {
-            //Write out to the screen about the enemy attack.
+            // Print the enemy encounter message.
             Console.WriteLine($"{player.Name}, you've encountered the {enemy.Name}!");
 
 
@@ -120,7 +113,7 @@ namespace RPG_Game
             while (!enemy.IsDead && !player.isDead)
             {
 
-                //Write out to the screan your options
+                // Print the player's options.
                 Console.WriteLine("What would you like to do ? " +
                     "\n\n 1. Attack " +
                     "\n 2. Defend " +
@@ -175,7 +168,7 @@ namespace RPG_Game
                         {
                             enemy.DoTAttack();
                         }
-                        
+
                         break;
 
                     //cheatcode - if you enter command Kill - the enemy is automatically dead.
@@ -215,5 +208,4 @@ namespace RPG_Game
             Console.WriteLine("Game Over!");
         }
     }
-
 }
